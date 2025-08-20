@@ -11,18 +11,7 @@ model User {
   id      Int       @id @default(autoincrement())
   email   String    @unique
   name    String?
-  Comment Comment[]
   post    Post[]
-}
-
-model Comment {
-  id         String   @id @default(uuid())
-  post_id    Int
-  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  user_id    Int
-  comment    String
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now()) @updatedAt
 }
 
 model Post {
